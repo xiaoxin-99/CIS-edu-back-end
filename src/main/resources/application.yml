@@ -1,1 +1,13 @@
+spring:
+  profiles:
+    active: lx
 
+mybatis:
+  mapper-locations: classpath/*.xml
+  type-aliases-package: com/sczyjsxy/jkx/cis/edubackend/model
+
+server:
+  servlet:
+    encoding:
+      charset: UTF-8
+    context-path: /cis/edu
