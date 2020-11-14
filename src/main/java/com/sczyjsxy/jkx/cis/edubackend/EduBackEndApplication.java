@@ -6,7 +6,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 /**
  * @author lx
  */
-//@SpringBootApplication
+@SpringBootApplication
 public class EduBackEndApplication {
 
     public static void main(String[] args) {
