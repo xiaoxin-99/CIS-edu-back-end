@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.service;
 
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherTimetableVo;
 
 import java.util.List;

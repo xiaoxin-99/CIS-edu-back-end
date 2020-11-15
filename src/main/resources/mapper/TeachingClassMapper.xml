@@ -3,4 +3,7 @@
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.TeachingClassMapper">
 
 
+    <select id="getTeachingClass" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.TeachingClass">
+        select * from teaching_class where teaching_class_id = #{id};
+    </select>
 </mapper>

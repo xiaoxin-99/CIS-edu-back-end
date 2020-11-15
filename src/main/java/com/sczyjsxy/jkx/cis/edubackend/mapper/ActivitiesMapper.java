@@ -1,6 +1,8 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherTimetableVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
@@ -51,4 +53,6 @@ public interface ActivitiesMapper {
      * @return Map<教学活动编号， 课程编号>
      */
     List<Activities> getActivitiesByTeachingClassId(List<String > ids, String semester);
+
+    List<TeacherTimetable> getActivitiesByTeacherId(String id, String semester);
 }
