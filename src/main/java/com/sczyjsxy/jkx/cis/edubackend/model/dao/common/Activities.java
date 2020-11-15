@@ -25,6 +25,11 @@ public class Activities {
     private Teacher teacher;
 
     /**
+     * 教学班
+     */
+    private TeachingClass teachingClass;
+
+    /**
      * 开课学期
      */
     private String semester;

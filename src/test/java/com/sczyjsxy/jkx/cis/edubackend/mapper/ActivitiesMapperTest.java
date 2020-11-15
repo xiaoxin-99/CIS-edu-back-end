@@ -1,6 +1,7 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -30,14 +31,6 @@ public class ActivitiesMapperTest {
     }
 
     @Test
-    public void getActivitiesAndCourseMap() {
-        ArrayList<String> list = new ArrayList<>();
-        list.add("1961020501");
-        list.add("1861020502");
-        System.out.println(activitiesMapper.getActivitiesAndCourseMap(list, "2018-2019-2"));
-    }
-
-    @Test
     public void getActivities() {
         ArrayList<String> list = new ArrayList<>();
         list.add("1961020501");
@@ -47,7 +40,7 @@ public class ActivitiesMapperTest {
 
     @Test
     void getActivitiesByTeacherId() {
-        List<TeacherTimetable> activitiesByTeacherId = activitiesMapper.getActivitiesByTeacherId("1988210001", "2018-2019-2");
+        List<Activities> activitiesByTeacherId = activitiesMapper.getActivitiesByTeacherId("1988210001", "2018-2019-2");
         System.out.println(activitiesByTeacherId);
 
     }

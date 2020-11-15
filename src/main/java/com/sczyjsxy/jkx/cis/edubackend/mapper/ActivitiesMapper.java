@@ -38,21 +38,18 @@ public interface ActivitiesMapper {
     List<String> getScheduleId(String id);
 
     /**
-     * 根据教学班编号和学期 查询 教学活动编号、课程编号
-     * @param ids 教学班编号
-     * @param semester 学期
-     * @return Map<教学活动编号， 课程编号>
-     */
-    List<Map<String, String>> getActivitiesAndCourseMap(List<String > ids, String semester);
-
-
-    /**
      * 根据教学班编号和学期 查询 教学活动
      * @param ids 教学班编号
      * @param semester 学期
-     * @return Map<教学活动编号， 课程编号>
+     * @return List<教学活动编号， 课程编号>
      */
     List<Activities> getActivitiesByTeachingClassId(List<String > ids, String semester);
 
-    List<TeacherTimetable> getActivitiesByTeacherId(String id, String semester);
+    /**
+     * 通过教师编号和学期 查找 教学活动
+     * @param id 师编号
+     * @param semester 学期
+     * @return
+     */
+    List<Activities> getActivitiesByTeacherId(String id, String semester);
 }

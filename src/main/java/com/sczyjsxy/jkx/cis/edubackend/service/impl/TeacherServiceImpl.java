@@ -5,6 +5,7 @@ import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -39,36 +40,47 @@ public class TeacherServiceImpl implements TeacherService {
     public List<TeacherTimetableVo> teacherTimetable(String teacherId, String semester) {
         ArrayList<TeacherTimetableVo> list = new ArrayList<>();
         // 查询教师的教学活动
-        List<TeacherTimetable> activitiesByTeacherId = activitiesMapper
-                .getActivitiesByTeacherId("1988210001", "2018-2019-2");
+        List<Activities> activities1 = getActivities("1988210001", "2018-2019-2");
 
         // 查询教学活动的课程、名称
-        for (TeacherTimetable timetable : activitiesByTeacherId){
-            Activities activities = timetable.getActivities();
-            activities.setTeacher(teacherMapper.
-                    getTeacher(activities.getTeacher().getId()));
-            activities.setCourse(courseMapper.
-                    getCourse(activities.getCourse().getCourseId()));
-            timetable.setTimeAndPlace(scheduleMapper.
-                    getTeachingTimeAndPlaceByActivitiesId(activities.getActivitiesId()));
-            timetable.setTeachingClass(teachingClassMapper
-                    .getTeachingClass(timetable.getTeachingClass().getTeachingClassId()));
-        }
+        for (Activities activities : activities1){
+            List<TeachingTimeAndPlace> timeAndPlaceList =
+                    scheduleMapper.getTeachingTimeAndPlaceByActivitiesId(activities.getActivitiesId());
 
-        for (TeacherTimetable timetable : activitiesByTeacherId){
-            for (TeachingTimeAndPlace timeAndPlace : timetable.getTimeAndPlace()){
-                Activities activities = timetable.getActivities();
-                TeacherTimetableVo teacherActivities = new TeacherTimetableVo();
+            for (TeachingTimeAndPlace timeAndPlace : timeAndPlaceList) {
+                TeacherTimetableVo teacherTimetableVo = new TeacherTimetableVo();
                 TeachingActivities teachingActivities = new TeachingActivities();
                 teachingActivities.setCourse(activities.getCourse().getCourseName());
                 teachingActivities.setPlan(activities.getPlan());
                 teachingActivities.setTimeAndPlace(timeAndPlace);
-                teacherActivities.setActivities(teachingActivities);
-                teacherActivities.setClassName(timetable.getTeachingClass().getTeachingClassName());
-                list.add(teacherActivities);
+                teacherTimetableVo.setActivities(teachingActivities);
+                teacherTimetableVo.setClassName(activities.getCourse().getCourseName());
+                list.add(teacherTimetableVo);
             }
         }
 
         return list;
+    }
+
+    /**
+     * 查询教师的教学班
+     * @param teacherId 教师编号
+     * @param semester 学期
+     * @return
+     */
+
+    private List<Activities> getActivities (String teacherId, String semester){
+
+
+        List<Activities> activities = activitiesMapper
+                .getActivitiesByTeacherId(teacherId, semester);
+
+        for (Activities item : activities) {
+            item.setTeacher(teacherMapper.
+                    getTeacher(item.getTeacher().getId()));
+            item.setCourse(courseMapper.
+                    getCourse(item.getCourse().getCourseId()));
+        }
+        return activities;
     }
 }
