@@ -39,7 +39,7 @@
         <result column="remark" property="remark" />
     </resultMap>
 
-    <select id="getActivities" resultMap="activities">
+    <select id="getActivitiesByTeachingClassId" resultMap="activities">
         select teaching_activities_id, course_id, teacher_id, semester, plan,
          week_period, credit, proportion, remark
         from teaching_activities

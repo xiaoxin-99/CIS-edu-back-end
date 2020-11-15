@@ -44,7 +44,7 @@ public class TimetableServiceImpl implements TimetableService {
         // 查询学生所选班级
         List<String> teachingClassIds = chooseMapper.getTeachingClassId(studentId);
         // 查询教学班的教学活动
-        List<Activities> activities = activitiesMapper.getActivities(teachingClassIds, semester);
+        List<Activities> activities = activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
         // 查询教学活动的课程、名称
         for (Activities activitiesItem : activities){
             activitiesItem.setTeacher(teacherMapper.

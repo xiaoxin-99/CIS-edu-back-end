@@ -50,5 +50,5 @@ public interface ActivitiesMapper {
      * @param semester 学期
      * @return Map<教学活动编号， 课程编号>
      */
-    List<Activities> getActivities(List<String > ids, String semester);
+    List<Activities> getActivitiesByTeachingClassId(List<String > ids, String semester);
 }
