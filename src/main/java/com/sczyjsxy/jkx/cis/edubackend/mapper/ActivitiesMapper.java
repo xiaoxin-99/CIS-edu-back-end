@@ -1,13 +1,10 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherTimetableVo;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
-import java.util.Map;
 
 /**
  * @author Mr zhang
@@ -41,7 +38,7 @@ public interface ActivitiesMapper {
      * 根据教学班编号和学期 查询 教学活动
      * @param ids 教学班编号
      * @param semester 学期
-     * @return List<教学活动编号， 课程编号>
+     * @return 教学活动列表
      */
     List<Activities> getActivitiesByTeachingClassId(List<String > ids, String semester);
 
@@ -49,7 +46,7 @@ public interface ActivitiesMapper {
      * 通过教师编号和学期 查找 教学活动
      * @param id 师编号
      * @param semester 学期
-     * @return
+     * @return 教学活动列表
      */
     List<Activities> getActivitiesByTeacherId(String id, String semester);
 }

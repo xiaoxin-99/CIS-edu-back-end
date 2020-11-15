@@ -14,7 +14,7 @@ public class ChooseMapperTest {
 
     @Test
     void queryTeachingClassId() {
-        List<String> strings = chooseMapper.getTeachingClassId("176102050105");
+        List<String> strings = chooseMapper.getTeachingClassId("176102050117");
         System.out.println(strings.toString());
     }
 }

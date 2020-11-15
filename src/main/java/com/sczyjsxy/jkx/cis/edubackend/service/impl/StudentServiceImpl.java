@@ -1,9 +1,11 @@
 package com.sczyjsxy.jkx.cis.edubackend.service.impl;
 
 import com.sczyjsxy.jkx.cis.edubackend.mapper.*;
+import com.sczyjsxy.jkx.cis.edubackend.model.common.ScoreDetails;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentScoreVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.service.StudentService;
@@ -34,6 +36,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private CourseMapper courseMapper;
+
+    @Autowired
+    private ScoreMapper scoreMapper;
 
     @Override
     public List<StudentTimetableVo> studentTimetable(String studentId, String semester) {
@@ -66,9 +71,18 @@ public class StudentServiceImpl implements StudentService {
         List<Activities> activities = getActivities(studentId,semester);
 
         for (Activities act : activities) {
-            StudentScoreVo score = new StudentScoreVo();
-            score.setCourse(act.getCourse().getCourseName());
-            score.setTeacher(act.getTeacher().getName());
+            StudentScoreVo scoreVo = new StudentScoreVo();
+            scoreVo.setCourse(act.getCourse().getCourseName());
+            scoreVo.setTeacher(act.getTeacher().getName());
+            Score score = scoreMapper.getScoreByStudentIdAndActivitiesId(studentId, act.getActivitiesId());
+            if (score != null){
+                ScoreDetails scoreDetails = new ScoreDetails();
+                scoreDetails.setPerformanceScore(score.getPerformanceScore());
+                scoreDetails.setExamScore(score.getExamScore());
+                scoreDetails.setStatus(score.getStatus());
+                scoreVo.setScore(scoreDetails);
+            }
+            list.add(scoreVo);
         }
 
         return list;
