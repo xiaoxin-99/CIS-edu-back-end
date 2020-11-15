@@ -16,6 +16,6 @@ public interface CourseMapper {
      * @param id 课程id
      * @return 课程信息
      */
-    Course getCourseInfo(String id);
+    Course getCourse(String id);
 
 }

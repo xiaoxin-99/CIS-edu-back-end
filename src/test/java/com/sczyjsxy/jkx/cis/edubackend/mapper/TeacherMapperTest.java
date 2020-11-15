@@ -12,6 +12,6 @@ public class TeacherMapperTest {
 
     @Test
     void getTeacherName() {
-        System.out.println(teacherMapper.getTeacherName("1977210002"));
+        System.out.println(teacherMapper.getTeacher("1977210002"));
     }
 }

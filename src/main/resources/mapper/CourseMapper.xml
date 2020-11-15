@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.CourseMapper">
 
-    <select id="getCourseInfo" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.Course">
+    <select id="getCourse" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.Course">
         select course_id, course_name  from course where course_id = #{id};
     </select>
 

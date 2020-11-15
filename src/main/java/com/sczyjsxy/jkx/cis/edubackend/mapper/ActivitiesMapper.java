@@ -19,21 +19,21 @@ public interface ActivitiesMapper {
      * @param id 教学活动编号
      * @return 课程名称
      */
-    String queryCourseName(String id);
+    String getCourseName(String id);
 
     /**
      * 根据 教学活动编号 查询 教师姓名
      * @param id 教学活动编号
      * @return 教师姓名
      */
-    String queryTeacherName(String id);
+    String getTeacherName(String id);
 
     /**
      * 根据教学活动编号查询排课编号
      * @param id 教学活动编号
      * @return 排课编号
      */
-    List<String> queryScheduleId(String id);
+    List<String> getScheduleId(String id);
 
     /**
      * 根据教学班编号和学期 查询 教学活动编号、课程编号

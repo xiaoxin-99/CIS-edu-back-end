@@ -16,5 +16,5 @@ public interface TeacherMapper {
      * @param id 教师id
      * @return 教师信息
      */
-    Teacher getTeacherName(String id);
+    Teacher getTeacher(String id);
 }

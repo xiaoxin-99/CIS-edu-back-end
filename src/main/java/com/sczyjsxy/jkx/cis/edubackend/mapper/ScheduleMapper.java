@@ -18,13 +18,13 @@ public interface ScheduleMapper {
      * @param ids 排课编号集合
      * @return TeachingTimeAndPlace
      */
-    List<TeachingTimeAndPlace> queryTeachingTimeAndPlaceByScheduleId(List<String> ids);
+    List<TeachingTimeAndPlace> getTeachingTimeAndPlaceByScheduleId(List<String> ids);
 
     /**
      * 根据 教学活动编号 查询 上课 星次、节次、地点
      * @param id 教学活动编号
      * @return TeachingTimeAndPlace
      */
-    List<TeachingTimeAndPlace> queryTeachingTimeAndPlaceByActivitiesId(String id);
+    List<TeachingTimeAndPlace> getTeachingTimeAndPlaceByActivitiesId(String id);
 
 }

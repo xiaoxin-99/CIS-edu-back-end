@@ -19,7 +19,7 @@ public interface ChooseMapper {
      * @param studentId 学生编号
      * @return 教学班编号列表
      */
-    List<String> queryTeachingClassId(String studentId);
+    List<String> getTeachingClassId(String studentId);
 
 
 }

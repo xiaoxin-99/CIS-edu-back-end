@@ -1,6 +1,5 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
-import com.sczyjsxy.jkx.cis.edubackend.mapper.ChooseMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -15,7 +14,7 @@ public class ChooseMapperTest {
 
     @Test
     void queryTeachingClassId() {
-        List<String> strings = chooseMapper.queryTeachingClassId("176102050105");
+        List<String> strings = chooseMapper.getTeachingClassId("176102050105");
         System.out.println(strings.toString());
     }
 }

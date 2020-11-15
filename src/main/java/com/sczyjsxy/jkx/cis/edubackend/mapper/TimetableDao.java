@@ -14,19 +14,4 @@ import java.util.List;
 @Mapper
 public interface TimetableDao {
 
-    /**
-     * 查询学生课表
-     * @param studentId 学生编号
-     * @param semester 学期
-     * @return 学生课表
-     */
-    List<StudentActivities> queryStudent(String studentId, String semester);
-
-    /**
-     * 查询教师课表
-     * @param teacherId 教师编号
-     * @param semester 学期
-     * @return 教师课表
-     */
-    List<TeacherActivities> queryTeacher(String teacherId, String semester);
 }

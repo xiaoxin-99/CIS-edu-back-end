@@ -2,7 +2,7 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.ScheduleMapper">
 
-    <select id="queryTeachingTimeAndPlaceByScheduleId" resultType="com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace">
+    <select id="getTeachingTimeAndPlaceByScheduleId" resultType="com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace">
         select s.week, s.section, c.place from schedule s inner join classroom c on s.classroom_id = c.classroom_id
         where
         <foreach item="item" index="index" collection="ids" open="" separator="or" close="">
@@ -10,7 +10,7 @@
         </foreach>
     </select>
 
-    <select id="queryTeachingTimeAndPlaceByActivitiesId"
+    <select id="getTeachingTimeAndPlaceByActivitiesId"
             resultType="com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace">
         select s.week, s.section, c.place from schedule s inner join classroom c
         on s.classroom_id = c.classroom_id

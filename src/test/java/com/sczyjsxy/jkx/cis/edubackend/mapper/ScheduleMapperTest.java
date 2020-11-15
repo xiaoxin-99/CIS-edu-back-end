@@ -17,11 +17,11 @@ public class ScheduleMapperTest {
     void queryTeachingTimeAndPlaceByScheduleId() {
         List<String> l = new ArrayList<>();
         l.add("1");l.add("2");
-        System.out.println(scheduleMapper.queryTeachingTimeAndPlaceByScheduleId(l));
+        System.out.println(scheduleMapper.getTeachingTimeAndPlaceByScheduleId(l));
     }
 
     @Test
     void queryTeachingTimeAndPlaceByActivitiesId() {
-        System.out.println(scheduleMapper.queryTeachingTimeAndPlaceByActivitiesId("1"));
+        System.out.println(scheduleMapper.getTeachingTimeAndPlaceByActivitiesId("1"));
     }
 }

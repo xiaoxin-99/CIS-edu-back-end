@@ -12,6 +12,6 @@ public class CourseMapperTest {
 
     @Test
     void getCourseInfo() {
-        System.out.println(courseMapper.getCourseInfo("1234567819"));
+        System.out.println(courseMapper.getCourse("1234567819"));
     }
 }
