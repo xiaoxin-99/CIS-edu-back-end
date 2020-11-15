@@ -15,7 +15,7 @@ public class TeachingActivities {
     private String course;
 
     /**
-     * 星次+节次
+     * 星次+节次+ 地点
      */
     private TeachingTimeAndPlace timeAndPlace;
 
