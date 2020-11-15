@@ -3,7 +3,8 @@ package com.sczyjsxy.jkx.cis.edubackend.service.impl;
 import com.sczyjsxy.jkx.cis.edubackend.mapper.*;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetable;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherActivities;
 import com.sczyjsxy.jkx.cis.edubackend.service.TimetableService;
@@ -44,26 +45,28 @@ public class TimetableServiceImpl implements TimetableService {
         // 查询学生所选班级
         List<String> teachingClassIds = chooseMapper.getTeachingClassId(studentId);
         // 查询教学班的教学活动
-        List<Activities> activities = activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
+        List<StudentTimetable> studentTimetable = activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
         // 查询教学活动的课程、名称
-        for (Activities activitiesItem : activities){
-            activitiesItem.setTeacher(teacherMapper.
-                    getTeacher(activitiesItem.getTeacher().getId()));
-            activitiesItem.setCourse(courseMapper.
-                    getCourse(activitiesItem.getCourse().getCourseId()));
-            activitiesItem.setTimeAndPlace(scheduleMapper.
-                    getTeachingTimeAndPlaceByActivitiesId(activitiesItem.getActivitiesId()));
+        for (StudentTimetable timetable : studentTimetable){
+            Activities activities = timetable.getActivities();
+            activities.setTeacher(teacherMapper.
+                    getTeacher(activities.getTeacher().getId()));
+            activities.setCourse(courseMapper.
+                    getCourse(activities.getCourse().getCourseId()));
+            timetable.setTimeAndPlace(scheduleMapper.
+                    getTeachingTimeAndPlaceByActivitiesId(activities.getActivitiesId()));
         }
 
-        for (Activities activitiesItem : activities){
-            for (TeachingTimeAndPlace timeAndPlace : activitiesItem.getTimeAndPlace()){
+        for (StudentTimetable timetable : studentTimetable){
+            for (TeachingTimeAndPlace timeAndPlace : timetable.getTimeAndPlace()){
+                Activities activities = timetable.getActivities();
                 StudentActivities studentActivities = new StudentActivities();
                 TeachingActivities teachingActivities = new TeachingActivities();
-                teachingActivities.setCourse(activitiesItem.getCourse().getCourseName());
-                teachingActivities.setPlan(activitiesItem.getPlan());
+                teachingActivities.setCourse(activities.getCourse().getCourseName());
+                teachingActivities.setPlan(activities.getPlan());
                 teachingActivities.setTimeAndPlace(timeAndPlace);
                 studentActivities.setActivities(teachingActivities);
-                studentActivities.setTeacher(activitiesItem.getTeacher().getName());
+                studentActivities.setTeacher(activities.getTeacher().getName());
                 list.add(studentActivities);
             }
         }

@@ -28,15 +28,15 @@
         and  ta.semester = #{semester};
     </select>
 
-    <resultMap id="activities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.Activities">
-        <id column="teaching_activities_id"  property="activitiesId" />
-        <result column="course_id" property="course.courseId" />
-        <result column="teacher_id" property="teacher.id" />
-        <result column="semester" property="semester" />
-        <result column="week_period" property="weekPeriod" />
-        <result column="credit" property="credit" />
-        <result column="proportion" property="proportion" />
-        <result column="remark" property="remark" />
+    <resultMap id="activities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetable">
+        <id column="teaching_activities_id"  property="activities.activitiesId" />
+        <result column="course_id" property="activities.course.courseId" />
+        <result column="teacher_id" property="activities.teacher.id" />
+        <result column="semester" property="activities.semester" />
+        <result column="week_period" property="activities.weekPeriod" />
+        <result column="credit" property="activities.credit" />
+        <result column="proportion" property="activities.proportion" />
+        <result column="remark" property="activities.remark" />
     </resultMap>
 
     <select id="getActivitiesByTeachingClassId" resultMap="activities">

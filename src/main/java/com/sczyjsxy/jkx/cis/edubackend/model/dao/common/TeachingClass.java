@@ -1,4 +1,4 @@
-package com.sczyjsxy.jkx.cis.edubackend.model.dao;
+package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
 import lombok.Data;
 
@@ -34,9 +34,4 @@ public class TeachingClass {
      * 教学班类型
      */
     private String type;
-
-    /**
-     * 教学活动
-     */
-    private List<Activities> activities;
 }

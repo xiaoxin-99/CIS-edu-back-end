@@ -1,6 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.Teacher;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Teacher;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 

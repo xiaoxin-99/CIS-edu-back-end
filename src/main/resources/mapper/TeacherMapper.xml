@@ -3,7 +3,7 @@
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.TeacherMapper">
 
 
-    <select id="getTeacher" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.Teacher">
+    <select id="getTeacher" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Teacher">
         select teacher_id as id, teacher_name as name, gender, phone from teacher where teacher_id = #{id};
     </select>
 

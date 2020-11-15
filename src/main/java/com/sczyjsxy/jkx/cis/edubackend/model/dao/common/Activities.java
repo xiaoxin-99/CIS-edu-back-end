@@ -1,11 +1,9 @@
-package com.sczyjsxy.jkx.cis.edubackend.model.dao;
+package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import lombok.Data;
 
-import java.util.List;
-
 /**
+ * 教学活动
  * @author lx
  */
 @Data
@@ -56,8 +54,4 @@ public class Activities {
      */
     private String remark;
 
-    /**
-     * 星次节次地点
-     */
-    private List<TeachingTimeAndPlace> timeAndPlace;
 }

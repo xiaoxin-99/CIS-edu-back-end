@@ -1,4 +1,4 @@
-package com.sczyjsxy.jkx.cis.edubackend.model.dao;
+package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
 import lombok.Data;
 
