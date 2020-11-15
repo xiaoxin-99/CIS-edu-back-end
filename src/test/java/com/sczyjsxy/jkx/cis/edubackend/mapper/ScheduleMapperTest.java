@@ -1,4 +1,4 @@
-package com.sczyjsxy.jkx.cis.edubackend;
+package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
 import com.sczyjsxy.jkx.cis.edubackend.mapper.ScheduleMapper;
 import org.junit.jupiter.api.Test;
