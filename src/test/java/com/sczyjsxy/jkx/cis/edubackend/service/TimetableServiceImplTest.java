@@ -14,7 +14,6 @@ public class TimetableServiceImplTest {
     public void studentTimetable (){
         String studentId = "176102050105";
         String semester = "2018-2019-2";
-        timetableService.studentTimetable(studentId, semester)
-                .stream().forEach(System.out::println);
+        timetableService.studentTimetable(studentId, semester).forEach(System.out::println);
     }
 }
