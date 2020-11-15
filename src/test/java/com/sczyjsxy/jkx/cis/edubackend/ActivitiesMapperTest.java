@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.util.ArrayList;
+
 @SpringBootTest
 public class ActivitiesMapperTest {
 
@@ -25,4 +27,21 @@ public class ActivitiesMapperTest {
     void queryScheduleId() {
         System.out.println(activitiesMapper.queryScheduleId("1"));
     }
+
+    @Test
+    public void getActivitiesAndCourseMap() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("1961020501");
+        list.add("1861020502");
+        System.out.println(activitiesMapper.getActivitiesAndCourseMap(list, "2018-2019-2"));
+    }
+
+    @Test
+    public void getActivities() {
+        ArrayList<String> list = new ArrayList<>();
+        list.add("1961020501");
+        list.add("1861020502");
+        System.out.println(activitiesMapper.getActivities(list, "2018-2019-2"));
+    }
+
 }

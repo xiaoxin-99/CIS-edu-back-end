@@ -11,8 +11,5 @@ public class TeachingClassMapperTest {
     @Autowired
     TeachingClassMapper mapper;
 
-    @Test
-    public void TeachingClassMapper() {
-        System.out.println(mapper.getActivitiesAndCourseMap("1961020501", "2018-2019-2"));
-    }
+
 }

@@ -1,6 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.entity;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.common.TeachingActivities;
+import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import lombok.Data;
 
 /**

@@ -1,9 +1,11 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.Activities;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author Mr zhang
@@ -32,4 +34,21 @@ public interface ActivitiesMapper {
      * @return 排课编号
      */
     List<String> queryScheduleId(String id);
+
+    /**
+     * 根据教学班编号和学期 查询 教学活动编号、课程编号
+     * @param ids 教学班编号
+     * @param semester 学期
+     * @return Map<教学活动编号， 课程编号>
+     */
+    List<Map<String, String>> getActivitiesAndCourseMap(List<String > ids, String semester);
+
+
+    /**
+     * 根据教学班编号和学期 查询 教学活动
+     * @param ids 教学班编号
+     * @param semester 学期
+     * @return Map<教学活动编号， 课程编号>
+     */
+    List<Activities> getActivities(List<String > ids, String semester);
 }

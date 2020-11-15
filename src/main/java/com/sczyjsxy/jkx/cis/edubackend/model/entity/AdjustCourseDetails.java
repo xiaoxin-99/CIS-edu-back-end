@@ -1,6 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.entity;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.common.TeachingWeekAndTimeAndPlace;
+import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingWeekAndTimeAndPlace;
 import lombok.Data;
 
 import java.time.LocalDate;

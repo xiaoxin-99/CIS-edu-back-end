@@ -1,4 +1,4 @@
-package com.sczyjsxy.jkx.cis.edubackend.model.entity.common;
+package com.sczyjsxy.jkx.cis.edubackend.model.common;
 
 import lombok.Data;
 

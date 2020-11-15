@@ -17,5 +17,38 @@
         on ta.teaching_activities_id = s.teaching_activities_id where  ta.teaching_activities_id  = #{id};
     </select>
 
+    <select id="getActivitiesAndCourseMap" resultType="java.util.Map">
+        select ta.teaching_activities_id activities, ta.course_id course
+        from teaching_class tc inner join teaching_activities ta
+        on tc.teaching_class_id = ta.teaching_class_id
+        where
+        <foreach item="item" index="index" collection="ids" open="" separator="or" close="">
+            tc.teaching_class_id = #{item}
+        </foreach>
+        and  ta.semester = #{semester};
+    </select>
+
+    <resultMap id="activities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.Activities">
+        <id column="teaching_class_id"  property="activitiesId" />
+        <result column="course_id" property="course.courseId" />
+        <result column="teacher_id" property="teacher.id" />
+        <result column="semester" property="semester" />
+        <result column="week_period" property="weekPeriod" />
+        <result column="credit" property="credit" />
+        <result column="proportion" property="proportion" />
+        <result column="remark" property="remark" />
+    </resultMap>
+
+    <select id="getActivities" resultMap="activities">
+        Select teaching_class_id , course_id, teacher_id, semester, plan,
+         week_period, credit, proportion, remark
+        from teaching_activities
+        where
+        <foreach item="item" index="index" collection="ids" open="" separator="or" close="">
+            teaching_class_id = #{item}
+        </foreach>
+        and semester = #{semester};
+    </select>
+
 
 </mapper>
