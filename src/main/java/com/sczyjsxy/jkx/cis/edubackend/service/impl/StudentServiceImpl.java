@@ -86,7 +86,6 @@ public class StudentServiceImpl implements StudentService {
                     getTeacher(item.getTeacher().getId()));
             item.setCourse(courseMapper.
                     getCourse(item.getCourse().getCourseId()));
-
         }
         return activities;
     }
