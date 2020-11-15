@@ -5,15 +5,15 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-public class TimetableServiceImplTest {
+public class StudentServiceImplTest {
 
     @Autowired
-    private TimetableService timetableService;
+    private StudentService studentService ;
 
     @Test
     public void studentTimetable (){
         String studentId = "176102050105";
         String semester = "2018-2019-2";
-        timetableService.studentTimetable(studentId, semester).forEach(System.out::println);
+        studentService.studentTimetable(studentId, semester).forEach(System.out::println);
     }
 }

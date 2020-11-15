@@ -6,17 +6,10 @@ import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherActivities;
 import java.util.List;
 
 /**
- *
+ * 教师服务
  * @author lx
  */
-public interface TimetableService {
-    /**
-     * 获取学生课表
-     * @param studentId 学生编号
-     * @param semester 学期
-     * @return 学生课表
-     */
-    List<StudentActivities> studentTimetable(String studentId, String semester);
+public interface TeacherService {
 
     /**
      * 获取教师课表

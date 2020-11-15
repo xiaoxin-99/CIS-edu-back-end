@@ -7,7 +7,7 @@ import com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherActivities;
-import com.sczyjsxy.jkx.cis.edubackend.service.TimetableService;
+import com.sczyjsxy.jkx.cis.edubackend.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * 课表服务实现
+ * 学生服务实现
  * @author lx
  */
 @Service
-public class TimetableServiceImpl implements TimetableService {
+public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private ActivitiesMapper activitiesMapper;
@@ -29,9 +29,6 @@ public class TimetableServiceImpl implements TimetableService {
 
     @Autowired
     private ScheduleMapper scheduleMapper;
-
-    @Autowired
-    private TeachingClassMapper teachingClassMapper;
 
     @Autowired
     private TeacherMapper teacherMapper;
@@ -72,11 +69,6 @@ public class TimetableServiceImpl implements TimetableService {
         }
 
         return list;
-    }
-
-    @Override
-    public List<TeacherActivities> teacherTimetable(String teacherId, String semester) {
-        return null;
     }
 }
 
