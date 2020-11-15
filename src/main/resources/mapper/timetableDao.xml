@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.TimetableDao">
+
+<!--    <resultMap id="teacherTimetable" type="com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherActivities">-->
+<!--        <result column=""-->
+
+<!--    </resultMap>-->
+
+
+<!--    <select id="queryStudent" resultMap="teacherTimetable">-->
+<!--        select * from mv-->
+<!--    </select>-->
+</mapper>

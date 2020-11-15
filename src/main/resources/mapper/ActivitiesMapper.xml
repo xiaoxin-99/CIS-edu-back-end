@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.ActivitiesMapper">
+
+    <select id="queryCourseName" resultType="java.lang.String">
+        select c.course_name from course c inner join teaching_activities ta on c.course_id = ta.course_id
+        where ta.teaching_activities_id = #{id};
+    </select>
+
+    <select id="queryTeacherName" resultType="java.lang.String">
+        select t.teacher_name from teacher t inner join teaching_activities ta on t.teacher_id = ta.teacher_id
+        where ta.teaching_activities_id = #{id};
+    </select>
+
+    <select id="queryScheduleId" resultType="java.lang.String">
+        select s.schedule_id from teaching_activities ta inner join schedule s
+        on ta.teaching_activities_id = s.teaching_activities_id where  ta.teaching_activities_id  = #{id};
+    </select>
+
+
+</mapper>
