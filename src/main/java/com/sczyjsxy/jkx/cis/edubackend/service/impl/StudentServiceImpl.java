@@ -3,10 +3,9 @@ package com.sczyjsxy.jkx.cis.edubackend.service.impl;
 import com.sczyjsxy.jkx.cis.edubackend.mapper.*;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetable;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetableDAo;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentActivities;
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherActivities;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.service.StudentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,14 +36,14 @@ public class StudentServiceImpl implements StudentService {
     private CourseMapper courseMapper;
 
     @Override
-    public List<StudentActivities> studentTimetable(String studentId, String semester) {
-        ArrayList<StudentActivities> list = new ArrayList<>();
+    public List<StudentTimetableVo> studentTimetable(String studentId, String semester) {
+        ArrayList<StudentTimetableVo> list = new ArrayList<>();
         // 查询学生所选班级
         List<String> teachingClassIds = chooseMapper.getTeachingClassId(studentId);
         // 查询教学班的教学活动
-        List<StudentTimetable> studentTimetable = activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
+        List<StudentTimetableDAo> studentTimetable = activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
         // 查询教学活动的课程、名称
-        for (StudentTimetable timetable : studentTimetable){
+        for (StudentTimetableDAo timetable : studentTimetable){
             Activities activities = timetable.getActivities();
             activities.setTeacher(teacherMapper.
                     getTeacher(activities.getTeacher().getId()));
@@ -54,10 +53,10 @@ public class StudentServiceImpl implements StudentService {
                     getTeachingTimeAndPlaceByActivitiesId(activities.getActivitiesId()));
         }
 
-        for (StudentTimetable timetable : studentTimetable){
+        for (StudentTimetableDAo timetable : studentTimetable){
             for (TeachingTimeAndPlace timeAndPlace : timetable.getTimeAndPlace()){
                 Activities activities = timetable.getActivities();
-                StudentActivities studentActivities = new StudentActivities();
+                StudentTimetableVo studentActivities = new StudentTimetableVo();
                 TeachingActivities teachingActivities = new TeachingActivities();
                 teachingActivities.setCourse(activities.getCourse().getCourseName());
                 teachingActivities.setPlan(activities.getPlan());

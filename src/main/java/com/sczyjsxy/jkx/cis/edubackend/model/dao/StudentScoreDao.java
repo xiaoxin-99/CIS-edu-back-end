@@ -1,17 +1,20 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Student;
 import lombok.Data;
 
-import java.util.List;
-
 /**
- * 学生课表
+ * 学生成绩
  * @author lx
  */
 @Data
-public class StudentTimetable {
+public class StudentScoreDao {
+
+    /**
+     * 教学活动编号
+     */
+    private String teachingActivitiesId;
 
     /**
      * 教学活动
@@ -19,8 +22,8 @@ public class StudentTimetable {
     private Activities activities;
 
     /**
-     * 星次节次地点
+     * 学生
      */
-    private List<TeachingTimeAndPlace> timeAndPlace;
+    private Student student;
 
 }

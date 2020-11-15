@@ -1,7 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.service;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentActivities;
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherActivities;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherTimetableVo;
 
 import java.util.List;
 
@@ -17,5 +16,5 @@ public interface TeacherService {
      * @param semester 学期
      * @return 教师课表
      */
-    List<TeacherActivities> teacherTimetable(String teacherId, String semester);
+    List<TeacherTimetableVo> teacherTimetable(String teacherId, String semester);
 }

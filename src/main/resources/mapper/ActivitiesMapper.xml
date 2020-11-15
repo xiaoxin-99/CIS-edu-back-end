@@ -28,7 +28,7 @@
         and  ta.semester = #{semester};
     </select>
 
-    <resultMap id="activities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetable">
+    <resultMap id="activities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.StudentTimetableDAo">
         <id column="teaching_activities_id"  property="activities.activitiesId" />
         <result column="course_id" property="activities.course.courseId" />
         <result column="teacher_id" property="activities.teacher.id" />

@@ -8,7 +8,7 @@ import lombok.Data;
  * @author lx
  */
 @Data
-public class StudentActivities {
+public class StudentTimetableVo {
 
     private TeachingActivities activities;
 

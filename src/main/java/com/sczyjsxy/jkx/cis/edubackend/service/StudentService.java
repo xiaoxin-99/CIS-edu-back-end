@@ -1,6 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.service;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentActivities;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 
 import java.util.List;
 
@@ -16,5 +16,7 @@ public interface StudentService {
      * @param semester 学期
      * @return 学生课表
      */
-    List<StudentActivities> studentTimetable(String studentId, String semester);
+    List<StudentTimetableVo> studentTimetable(String studentId, String semester);
+
+
 }
