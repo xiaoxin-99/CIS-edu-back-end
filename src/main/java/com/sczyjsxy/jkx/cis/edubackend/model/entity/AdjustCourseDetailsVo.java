@@ -10,7 +10,7 @@ import java.time.LocalDate;
  * @author lx
  */
 @Data
-public class AdjustCourseDetails {
+public class AdjustCourseDetailsVo {
 
     /**
      * 调课编号

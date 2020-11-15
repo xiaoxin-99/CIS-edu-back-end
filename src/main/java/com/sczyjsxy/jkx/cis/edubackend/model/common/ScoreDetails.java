@@ -1,18 +1,13 @@
-package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
+package com.sczyjsxy.jkx.cis.edubackend.model.common;
 
 import lombok.Data;
 
 /**
- * 成绩
+ * 成绩详情
  * @author lx
  */
 @Data
-public class Score {
-
-    /**
-     * 成绩编号
-     */
-    private String scoreId;
+public class ScoreDetails {
 
     /**
      * 平时成绩
