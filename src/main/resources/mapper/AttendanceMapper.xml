@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.AttendanceMapper">
+
+    <resultMap id="attendance" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Attendance">
+        <result property="course" column="course" />
+        <result property="teacher" column="teacher_name" />
+        <result property="type" column="attendance_type" />
+        <result property="weekNum" column="week_num" />
+        <result property="week" column="week" />
+        <result property="section" column="section" />
+        <result property="time" column="create_time" />
+        <result property="remark" column="remark" />
+    </resultMap>
+
+    <select id="getAttendanceByStudentId"
+            resultMap="attendance">
+        select a.course, t.teacher_name ,a.attendance_type, a.week_num,
+         a.week, a.section, a.create_time, a.remark
+        from attendance a inner join teacher t on a.teacher_id = t.teacher_id
+        where student_id = #{studentId};
+    </select>
+</mapper>

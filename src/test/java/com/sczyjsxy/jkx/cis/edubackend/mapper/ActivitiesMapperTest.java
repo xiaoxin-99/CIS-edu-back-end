@@ -35,7 +35,7 @@ public class ActivitiesMapperTest {
         ArrayList<String> list = new ArrayList<>();
         list.add("1961020501");
         list.add("1861020502");
-//        System.out.println(activitiesMapper.getActivitiesByTeachingClassId(list, "2018-2019-2"));
+        System.out.println(activitiesMapper.getActivitiesByTeachingClassId(list, "2018-2019-2"));
     }
 
     @Test

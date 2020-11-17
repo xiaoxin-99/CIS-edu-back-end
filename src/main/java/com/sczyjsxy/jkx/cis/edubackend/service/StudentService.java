@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.service;
 
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Attendance;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentScoreVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 
@@ -26,4 +27,11 @@ public interface StudentService {
      * @return 成绩表
      */
     List<StudentScoreVo> studentScore(String studentId, String semester);
+
+    /**
+     * 根据 学号 查询 学生考勤列表
+     * @param studentId 学号
+     * @return 考勤列表
+     */
+    List<Attendance> attendance(String studentId);
 }

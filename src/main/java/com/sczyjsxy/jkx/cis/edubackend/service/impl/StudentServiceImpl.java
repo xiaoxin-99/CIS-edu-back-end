@@ -4,10 +4,7 @@ import com.sczyjsxy.jkx.cis.edubackend.mapper.*;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.ScoreDetails;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Course;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Teacher;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.*;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentScoreVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.service.StudentService;
@@ -35,6 +32,9 @@ public class StudentServiceImpl implements StudentService {
 
     @Autowired
     private ScoreMapper scoreMapper;
+
+    @Autowired
+    private AttendanceMapper attendanceMapper;
 
     @Override
     public List<StudentTimetableVo> studentTimetable(String studentId, String semester) {
@@ -84,10 +84,17 @@ public class StudentServiceImpl implements StudentService {
         return list;
     }
 
+    @Override
+    public List<Attendance> attendance(String studentId) {
+        return attendanceMapper.getAttendanceByStudentId(studentId);
+    }
+
     private List<Activities> getActivities (String studentId, String semester){
         List<String> teachingClassIds = chooseMapper.getTeachingClassId(studentId);
         return activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
     }
+
+
 }
 
 

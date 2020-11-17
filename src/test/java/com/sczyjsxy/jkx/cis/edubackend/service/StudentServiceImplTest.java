@@ -18,11 +18,16 @@ public class StudentServiceImplTest {
     }
 
     @Test
-    public void studentScore (){
+    public void studentScore() {
         String studentId = "176102050108";
         String semester = "2018-2019-2";
         studentService.studentScore(studentId, semester).forEach(System.out::println);
     }
 
+    @Test
+    public void attendance() {
+        String studentId = "176102050117";
+        studentService.attendance(studentId).forEach(System.out::println);
+    }
 
 }
