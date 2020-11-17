@@ -39,9 +39,14 @@ public class ActivitiesMapperTest {
     }
 
     @Test
+    void getActivitiesByTeachingClassId() {
+
+    }
+
+    @Test
     void getActivitiesByTeacherId() {
         List<Activities> activitiesByTeacherId = activitiesMapper.getActivitiesByTeacherId("1988210001", "2018-2019-2");
-        System.out.println(activitiesByTeacherId);
+        activitiesByTeacherId.forEach(System.out::println);
 
     }
 

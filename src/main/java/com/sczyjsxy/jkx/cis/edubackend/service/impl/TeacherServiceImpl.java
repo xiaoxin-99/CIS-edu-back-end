@@ -40,9 +40,10 @@ public class TeacherServiceImpl implements TeacherService {
     public List<TeacherTimetableVo> teacherTimetable(String teacherId, String semester) {
         ArrayList<TeacherTimetableVo> list = new ArrayList<>();
         // 查询教师的教学活动
-        List<Activities> activities1 = getActivities("1988210001", "2018-2019-2");
+        List<Activities> activities1 = activitiesMapper
+                .getActivitiesByTeacherId("1988210001", "2018-2019-2");
 
-        // 查询教学活动的课程、名称
+        // 查询教学活动的时间地点
         for (Activities activities : activities1){
             List<TeachingTimeAndPlace> timeAndPlaceList =
                     scheduleMapper.getTeachingTimeAndPlaceByActivitiesId(activities.getActivitiesId());
@@ -62,25 +63,4 @@ public class TeacherServiceImpl implements TeacherService {
         return list;
     }
 
-    /**
-     * 查询教师的教学班
-     * @param teacherId 教师编号
-     * @param semester 学期
-     * @return
-     */
-
-    private List<Activities> getActivities (String teacherId, String semester){
-
-
-        List<Activities> activities = activitiesMapper
-                .getActivitiesByTeacherId(teacherId, semester);
-
-        for (Activities item : activities) {
-            item.setTeacher(teacherMapper.
-                    getTeacher(item.getTeacher().getId()));
-            item.setCourse(courseMapper.
-                    getCourse(item.getCourse().getCourseId()));
-        }
-        return activities;
-    }
 }

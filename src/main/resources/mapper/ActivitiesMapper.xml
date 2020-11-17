@@ -17,16 +17,6 @@
         on ta.teaching_activities_id = s.teaching_activities_id where  ta.teaching_activities_id  = #{id};
     </select>
 
-    <select id="getActivitiesAndCourseMap" resultType="java.util.Map">
-        select ta.teaching_activities_id activities, ta.course_id course
-        from teaching_class tc inner join teaching_activities ta
-        on tc.teaching_class_id = ta.teaching_class_id
-        where
-        <foreach item="item" index="index" collection="ids" open="" separator="or" close="">
-            tc.teaching_class_id = #{item}
-        </foreach>
-        and  ta.semester = #{semester};
-    </select>
 
     <resultMap id="activities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities">
         <id column="teaching_activities_id"  property="activitiesId" />
@@ -53,20 +43,24 @@
     <resultMap id="teacherActivities" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities">
         <id column="teaching_activities_id"  property="activitiesId" />
         <result column="course_id" property="course.courseId" />
+        <result column="course_name" property="course.courseName"/>
         <result column="teacher_id" property="teacher.id" />
+        <result column="teacher_name" property="teacher.name" />
+        <result column="gender" property="teacher.gender" />
+        <result column="phone" property="teacher.phone" />
         <result column="semester" property="semester" />
-        <result column="plan" property="plan"/>
-        <result column="teaching_class_id" property="teachingClass.teachingClassId"/>
         <result column="week_period" property="weekPeriod" />
         <result column="credit" property="credit" />
         <result column="proportion" property="proportion" />
         <result column="remark" property="remark" />
     </resultMap>
+
     <select id="getActivitiesByTeacherId" resultMap="teacherActivities">
-        select teaching_activities_id, course_id, teacher_id, semester, plan,
-         teaching_class_id, week_period, credit, proportion, remark
-        from teaching_activities
-        where teacher_id = #{id} and semester = #{semester};
+        select teaching_activities_id, c.course_id, c.course_name, t.teacher_id, t2.teacher_name, t2.gender, t2.phone,
+        semester, plan, week_period, credit, proportion, remark
+        from teaching_activities t inner join course c on t.course_id = c.course_id
+        inner join teacher t2 on t.teacher_id = t2.teacher_id
+        where t.teacher_id = #{id} and t.semester = #{semester};
     </select>
 
 
