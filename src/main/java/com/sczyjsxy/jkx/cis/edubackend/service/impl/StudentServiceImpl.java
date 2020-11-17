@@ -5,7 +5,9 @@ import com.sczyjsxy.jkx.cis.edubackend.model.common.ScoreDetails;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Course;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Teacher;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentScoreVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.service.StudentService;
@@ -32,44 +34,39 @@ public class StudentServiceImpl implements StudentService {
     private ScheduleMapper scheduleMapper;
 
     @Autowired
-    private TeacherMapper teacherMapper;
-
-    @Autowired
-    private CourseMapper courseMapper;
-
-    @Autowired
     private ScoreMapper scoreMapper;
 
     @Override
     public List<StudentTimetableVo> studentTimetable(String studentId, String semester) {
         ArrayList<StudentTimetableVo> list = new ArrayList<>(16);
-
         List<Activities> activities = getActivities(studentId,semester);
-
         for (Activities act : activities) {
             List<TeachingTimeAndPlace> timeAndPlaceList =
                     scheduleMapper.getTeachingTimeAndPlaceByActivitiesId(act.getActivitiesId());
             for (TeachingTimeAndPlace timeAndPlace : timeAndPlaceList) {
                 StudentTimetableVo studentActivities = new StudentTimetableVo();
                 TeachingActivities teachingActivities = new TeachingActivities();
-                teachingActivities.setCourse(act.getCourse().getCourseName());
+                Course course = act.getCourse();
+                if (course != null) {
+                    teachingActivities.setCourse(course.getCourseName());
+                }
+                Teacher teacher = act.getTeacher();
+                if (teacher != null) {
+                    studentActivities.setTeacher(teacher.getName());
+                }
                 teachingActivities.setPlan(act.getPlan());
                 teachingActivities.setTimeAndPlace(timeAndPlace);
                 studentActivities.setActivities(teachingActivities);
-                studentActivities.setTeacher(act.getTeacher().getName());
                 list.add(studentActivities);
             }
         }
-
         return list;
     }
 
     @Override
     public List<StudentScoreVo> studentScore(String studentId, String semester) {
         ArrayList<StudentScoreVo> list = new ArrayList<>(16);
-
         List<Activities> activities = getActivities(studentId,semester);
-
         for (Activities act : activities) {
             StudentScoreVo scoreVo = new StudentScoreVo();
             scoreVo.setCourse(act.getCourse().getCourseName());
@@ -84,24 +81,12 @@ public class StudentServiceImpl implements StudentService {
             }
             list.add(scoreVo);
         }
-
         return list;
     }
 
     private List<Activities> getActivities (String studentId, String semester){
-        // 查询学生所选班级
         List<String> teachingClassIds = chooseMapper.getTeachingClassId(studentId);
-
-        List<Activities> activities = activitiesMapper
-                .getActivitiesByTeachingClassId(teachingClassIds, semester);
-
-        for (Activities item : activities) {
-            item.setTeacher(teacherMapper.
-                    getTeacher(item.getTeacher().getId()));
-            item.setCourse(courseMapper.
-                    getCourse(item.getCourse().getCourseId()));
-        }
-        return activities;
+        return activitiesMapper.getActivitiesByTeachingClassId(teachingClassIds, semester);
     }
 }
 
