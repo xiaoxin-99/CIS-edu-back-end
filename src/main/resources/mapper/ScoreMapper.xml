@@ -1,6 +1,10 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.ScoreMapper">
+    <update id="modifyScore">
+        update score set performance_score = #{performanceScore},
+        exam_score=#{examScore} where score_id = #{scoreId};
+    </update>
 
     <select id="getScoreByStudentIdAndActivitiesId"
             resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score">
@@ -10,5 +14,55 @@
             and status = #{status}
         </if>
     </select>
+
+
+    <resultMap id="classScoreDetail" type="com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreDetailVo">
+        <result column="teaching_activities_id" property="teachingActivitiesId"/>
+        <result column="semester" property="semester"/>
+        <result column="teacher_id" property="teacherId"/>
+        <result column="course_id" property="course.courseId"/>
+        <result column="course_name" property="course.courseName"/>
+        <result column="teaching_class_id" property="teachingClass.teachingClassId"/>
+        <result column="teaching_class_name" property="teachingClass.teachingClassName"/>
+    </resultMap>
+
+    <select id="getClassScoreDetail" resultMap="classScoreDetail">
+        select t.teaching_activities_id, t2.teacher_id, t.semester, tc.teaching_class_id, c.course_id, c.course_name, tc.teaching_class_name
+        from teaching_activities t inner join teacher t2 on t.teacher_id = t2.teacher_id
+        inner join teaching_class tc on t.teaching_class_id = tc.teaching_class_id
+        inner join course c on t.course_id = c.course_id
+        where t.teacher_id = #{teacherId};
+    </select>
+
+    <select id="getScoreStatus" resultType="java.lang.Integer">
+        select status from score where teaching_activities_id = #{id};
+    </select>
+
+
+    <select id="getStudent" resultType="java.lang.String">
+        select s.student_id from choose c
+        join student s on c.student_id = s.student_id
+        where teaching_class_id = #{id};
+    </select>
+
+    <resultMap id="score" type="com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreVo">
+        <result column="score_id" property="score.scoreId"/>
+        <result column="performance_score" property="score.performanceScore"/>
+        <result column="exam_score" property="score.examScore"/>
+        <result column="proportion" property="proportion"/>
+        <result column="student_id" property="student.studentId"/>
+        <result column="student_name" property="student.studentName"/>
+    </resultMap>
+    <select id="getScoreByStudent" resultMap="score">
+        select s.score_id, s.performance_score, s.exam_score, ta.proportion,s2.student_id,s2.student_name from score s
+        inner join teaching_activities ta on s.teaching_activities_id = ta.teaching_activities_id
+        inner join student s2 on s.student_id = s2.student_id
+        where
+        <foreach collection="students" index="index" item="student" separator=" or" close="" open="">
+            s.student_id = #{student}
+        </foreach>
+    </select>
+
+
 
 </mapper>

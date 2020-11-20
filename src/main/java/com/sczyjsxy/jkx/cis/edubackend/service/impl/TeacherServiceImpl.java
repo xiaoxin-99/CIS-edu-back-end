@@ -3,9 +3,10 @@ package com.sczyjsxy.jkx.cis.edubackend.service.impl;
 import com.sczyjsxy.jkx.cis.edubackend.mapper.*;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
-import com.sczyjsxy.jkx.cis.edubackend.model.entity.StudentTimetableVo;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreDetailVo;
+import com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.TeacherTimetableVo;
 import com.sczyjsxy.jkx.cis.edubackend.service.TeacherService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,16 +26,10 @@ public class TeacherServiceImpl implements TeacherService {
     private ActivitiesMapper activitiesMapper;
 
     @Autowired
-    private TeacherMapper teacherMapper;
-
-    @Autowired
-    private CourseMapper courseMapper;
-
-    @Autowired
     private ScheduleMapper scheduleMapper;
 
     @Autowired
-    private TeachingClassMapper teachingClassMapper;
+    private ScoreMapper scoreMapper;
 
     @Override
     public List<TeacherTimetableVo> teacherTimetable(String teacherId, String semester) {
@@ -62,5 +57,38 @@ public class TeacherServiceImpl implements TeacherService {
 
         return list;
     }
+
+    @Override
+    public List<ClassScoreDetailVo> getClass(String teacherId) {
+        List<ClassScoreDetailVo> classScoreDetail = scoreMapper.getClassScoreDetail(teacherId);
+        for (ClassScoreDetailVo c: classScoreDetail ) {
+            c.setScoreStaus(scoreMapper.getScoreStatus(c.getTeachingActivitiesId()));
+        }
+        return classScoreDetail;
+    }
+
+    @Override
+    public List<ClassScoreVo> getClassScore(String teachingClassId) {
+        List<String> students = scoreMapper.getStudent(teachingClassId);
+        List<ClassScoreVo> scoreByStudent = scoreMapper.getScoreByStudent(students);
+        return scoreByStudent;
+    }
+
+//    @Override
+//    public List<ClassScoreVo> getClassScore(String teachingClassId) {
+//         return  scoreMapper.getStudentScore(teachingClassId);
+//    }
+
+    @Override
+    public Integer modifyScore(List<Score> scores) {
+        // 修改条数
+        int count = 0;
+        // 循环修改成绩
+        for (Score s : scores) {
+            count += scoreMapper.modifyScore(s);
+        }
+        return count;
+    }
+
 
 }
