@@ -14,6 +14,15 @@ public class ScoreMapperTest {
     public void getScoreByStudentIdAndActivitiesId() {
         String studentId = "176102050108";
         String activitiesId = "1";
-        System.out.println(scoreMapper.getScoreByStudentIdAndActivitiesId(studentId, activitiesId));
+        int status = 1;
+        System.out.println(scoreMapper
+                .getScoreByStudentIdAndActivitiesId(studentId, activitiesId,status));
+        System.out.println("=======================================================");
+        status = 0;
+        System.out.println(scoreMapper
+                .getScoreByStudentIdAndActivitiesId(studentId, activitiesId,status));
+        System.out.println("=======================================================");
+        System.out.println(scoreMapper
+                .getScoreByStudentIdAndActivitiesId(studentId, activitiesId,null));
     }
 }

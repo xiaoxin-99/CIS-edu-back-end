@@ -17,6 +17,6 @@ public interface ScoreMapper {
      * @param activitiesId 教学活动编号
      * @return 成绩
      */
-    Score getScoreByStudentIdAndActivitiesId(String studentId, String activitiesId);
+    Score getScoreByStudentIdAndActivitiesId(String studentId, String activitiesId, Integer status);
 
 }

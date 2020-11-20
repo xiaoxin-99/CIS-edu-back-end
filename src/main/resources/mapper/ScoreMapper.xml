@@ -2,10 +2,13 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.ScoreMapper">
 
-
     <select id="getScoreByStudentIdAndActivitiesId"
             resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score">
         select score_id, performance_score, exam_score, status from score
-        where student_id = #{studentId} and teaching_activities_id = #{activitiesId};
+        where student_id = #{studentId} and teaching_activities_id = #{activitiesId}
+        <if test="status != null">
+            and status = #{status}
+        </if>
     </select>
+
 </mapper>
