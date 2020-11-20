@@ -25,4 +25,9 @@ public class StudentScoreVo {
      */
     private ScoreDetails score;
 
+    /**
+     * 成绩占比
+     */
+    private Integer proportion;
+
 }

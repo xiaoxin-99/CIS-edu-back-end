@@ -13,6 +13,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * 学生服务实现
@@ -71,6 +72,7 @@ public class StudentServiceImpl implements StudentService {
             StudentScoreVo scoreVo = new StudentScoreVo();
             scoreVo.setCourse(act.getCourse().getCourseName());
             scoreVo.setTeacher(act.getTeacher().getName());
+            scoreVo.setProportion(act.getProportion());
             Score score = scoreMapper.getScoreByStudentIdAndActivitiesId(studentId, act.getActivitiesId());
             if (score != null){
                 ScoreDetails scoreDetails = new ScoreDetails();
@@ -81,6 +83,9 @@ public class StudentServiceImpl implements StudentService {
             }
             list.add(scoreVo);
         }
+        list = (ArrayList<StudentScoreVo>) list.stream()
+                .filter(scoreVo -> scoreVo.getScore().getStatus() == 1)
+                .collect(Collectors.toList());
         return list;
     }
 
