@@ -3,6 +3,7 @@ package com.sczyjsxy.jkx.cis.edubackend.model.entity;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingWeekAndTimeAndPlace;
 import lombok.Data;
 
+import java.io.Serializable;
 import java.time.LocalDate;
 
 /**
@@ -10,7 +11,7 @@ import java.time.LocalDate;
  * @author lx
  */
 @Data
-public class AdjustCourseDetailsVo {
+public class AdjustCourseDetailsVo implements Serializable {
 
     /**
      * 调课编号

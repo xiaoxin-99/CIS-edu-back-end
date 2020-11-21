@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.AdjustmentMapper">
+
+    <resultMap id="adjustment" type="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Adjustment">
+        <id column="adjustment_id" property="adjustmentId"/>
+        <result column="cause" property="cause"/>
+        <result column="before_week_num" property="before.weekNum"/>
+        <result column="before_week" property="before.timeAndPlace.week"/>
+        <result column="before_section" property="before.timeAndPlace.section"/>
+        <result column="before_room" property="before.timeAndPlace.place"/>
+        <result column="after_week_num" property="after.weekNum"/>
+        <result column="after_week" property="after.timeAndPlace.week"/>
+        <result column="after_section" property="after.timeAndPlace.section"/>
+        <result column="after_room" property="after.timeAndPlace.place"/>
+        <result column="replace_teacher" property="replaceTeacher"/>
+        <result column="status" property="status"/>
+        <result column="submit_time" property="submitTime"/>
+        <result column="teacher_id" property="teacherId"/>
+    </resultMap>
+    <insert id="addAdjustment">
+        insert into adjustment(cause, before_week_num, before_week, before_section,
+        before_room, after_week_num, after_week, after_section, after_room, replace_teacher,
+        status, submit_time, teacher_id)
+        values (#{adjustment.cause}, #{adjustment.before.weekNum},
+        #{adjustment.before.timeAndPlace.week}, #{adjustment.before.timeAndPlace.section},
+        #{adjustment.before.timeAndPlace.place},
+        #{adjustment.after.weekNum},#{adjustment.after.timeAndPlace.week},
+        #{adjustment.after.timeAndPlace.section},
+        #{adjustment.after.timeAndPlace.place}, #{adjustment.replaceTeacher}, 0,
+        #{adjustment.submitTime}, #{adjustment.teacherId}
+        )
+    </insert>
+
+    <select id="getAllAdjustment" resultMap="adjustment">
+        select adjustment_id, cause, before_week_num, before_week, before_section,
+        before_room, after_week_num, after_week, after_section, after_room,
+        replace_teacher, status, submit_time, teacher_id from adjustment
+        where teacher_id = #{teacherId};
+    </select>
+
+    <delete id="deleteAdjustment">
+        delete from adjustment where adjustment_id = #{adjustmentId}
+    </delete>
+
+</mapper>

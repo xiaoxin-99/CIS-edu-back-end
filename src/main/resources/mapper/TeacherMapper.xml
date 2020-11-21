@@ -2,9 +2,21 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.TeacherMapper">
 
-
     <select id="getTeacher" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Teacher">
         select teacher_id as id, teacher_name as name, gender, phone from teacher where teacher_id = #{id};
     </select>
+
+    <select id="getAllLog" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.TeachingLog">
+        select * from teaching_log;
+    </select>
+
+    <insert id="addTeachingLog">
+        insert into teaching_log(week_num, week, section, room, class_name, content, record_time, teacher_id)
+        values (
+        #{teachingLog.weekNum}, #{teachingLog.week},
+        #{teachingLog.section}, #{teachingLog.room},
+        #{teachingLog.className}, #{teachingLog.content},
+        #{teachingLog.recordTime}, #{teacherId})
+    </insert>
 
 </mapper>

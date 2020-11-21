@@ -1,10 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.sczyjsxy.jkx.cis.edubackend.mapper.ScoreMapper">
-    <update id="modifyScore">
-        update score set performance_score = #{performanceScore},
-        exam_score=#{examScore} where score_id = #{scoreId};
-    </update>
 
     <select id="getScoreByStudentIdAndActivitiesId"
             resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score">
@@ -63,6 +59,13 @@
         </foreach>
     </select>
 
+    <update id="modifyScore">
+        update score set performance_score = #{performanceScore},
+        exam_score=#{examScore} where score_id = #{scoreId};
+    </update>
 
+    <update id="confirmScore">
+        update score set status = 1 where teaching_activities_id = #{id};
+    </update>
 
 </mapper>

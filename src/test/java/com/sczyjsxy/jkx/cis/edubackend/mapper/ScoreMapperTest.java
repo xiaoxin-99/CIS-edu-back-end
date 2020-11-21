@@ -1,7 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Student;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -59,6 +58,12 @@ public class ScoreMapperTest {
         score.setScoreId("1");
         int i = scoreMapper.modifyScore(score);
         System.out.println(i);
+    }
+
+    @Test
+    void confirmScore() {
+        Integer integer = scoreMapper.confirmScore("2");
+        System.out.println(integer);
     }
 
 }
