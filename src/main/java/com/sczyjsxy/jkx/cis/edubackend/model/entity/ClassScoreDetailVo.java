@@ -4,12 +4,14 @@ import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Course;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.TeachingClass;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 课程评分详情
  * @author Mr zhang
  */
 @Data
-public class ClassScoreDetailVo {
+public class ClassScoreDetailVo implements Serializable {
 
     /**
      * 教学活动编号

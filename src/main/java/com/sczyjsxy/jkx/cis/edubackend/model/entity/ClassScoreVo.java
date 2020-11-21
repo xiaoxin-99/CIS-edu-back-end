@@ -4,12 +4,14 @@ import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Student;
 import lombok.Data;
 
+import java.io.Serializable;
+
 /**
  * 班级成绩详情
  * @author Mr zhang
  */
 @Data
-public class ClassScoreVo {
+public class ClassScoreVo implements Serializable {
 
     /**
      * 评分

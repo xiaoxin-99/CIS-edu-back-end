@@ -1,6 +1,5 @@
 package com.sczyjsxy.jkx.cis.edubackend.mapper;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;

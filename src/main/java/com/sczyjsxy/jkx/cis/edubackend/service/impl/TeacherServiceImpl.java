@@ -59,7 +59,7 @@ public class TeacherServiceImpl implements TeacherService {
     }
 
     @Override
-    public List<ClassScoreDetailVo> getClass(String teacherId) {
+    public List<ClassScoreDetailVo> getClassDetail(String teacherId) {
         List<ClassScoreDetailVo> classScoreDetail = scoreMapper.getClassScoreDetail(teacherId);
         for (ClassScoreDetailVo c: classScoreDetail ) {
             c.setScoreStaus(scoreMapper.getScoreStatus(c.getTeachingActivitiesId()));
@@ -70,24 +70,25 @@ public class TeacherServiceImpl implements TeacherService {
     @Override
     public List<ClassScoreVo> getClassScore(String teachingClassId) {
         List<String> students = scoreMapper.getStudent(teachingClassId);
-        List<ClassScoreVo> scoreByStudent = scoreMapper.getScoreByStudent(students);
-        return scoreByStudent;
+        return scoreMapper.getScoreByStudent(students);
     }
-
-//    @Override
-//    public List<ClassScoreVo> getClassScore(String teachingClassId) {
-//         return  scoreMapper.getStudentScore(teachingClassId);
-//    }
 
     @Override
     public Integer modifyScore(List<Score> scores) {
         // 修改条数
         int count = 0;
         // 循环修改成绩
+        System.out.println(scores.size());
         for (Score s : scores) {
             count += scoreMapper.modifyScore(s);
         }
         return count;
+    }
+
+    @Override
+    public Integer confirmScore(String id) {
+        // 确定成绩条数
+        return scoreMapper.confirmScore(id);
     }
 
 

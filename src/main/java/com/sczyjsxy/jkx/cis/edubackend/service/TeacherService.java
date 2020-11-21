@@ -1,6 +1,5 @@
 package com.sczyjsxy.jkx.cis.edubackend.service;
 
-import com.sczyjsxy.jkx.cis.edubackend.model.dao.TeacherTimetable;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreDetailVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreVo;
@@ -27,7 +26,7 @@ public interface TeacherService {
      * @param teacherId 教师编号
      * @return 班级详情列表
      */
-    List<ClassScoreDetailVo> getClass(String teacherId);
+    List<ClassScoreDetailVo> getClassDetail(String teacherId);
 
     /**
      * 根据教学班编号查询班级学生分数
@@ -42,5 +41,12 @@ public interface TeacherService {
      * @return 返回修改条数
      */
     Integer modifyScore(List<Score> scores);
+
+    /**
+     * 确定成绩，确定之后便不可修改
+     * @param id 教学活动编号
+     * @return 确定的条数
+     */
+    Integer confirmScore(String id);
 
 }
