@@ -1,4 +1,4 @@
-package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
+package com.sczyjsxy.jkx.cis.edubackend.common;
 
 import java.io.Serializable;
 

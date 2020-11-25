@@ -38,7 +38,7 @@ public class AjustmentMapperTest {
         teachingTimeAndPlace.setSection(1);
         t.setTimeAndPlace(teachingTimeAndPlace);
 
-        adjustment.setBeforeTeachingDetail(t);
+        adjustment.setBefore(t);
 
         TeachingWeekAndTimeAndPlace t1 = new TeachingWeekAndTimeAndPlace();
         t1.setWeekNum(3);
@@ -48,14 +48,14 @@ public class AjustmentMapperTest {
         teachingTimeAndPlace1.setSection(4);
         t1.setTimeAndPlace(teachingTimeAndPlace);
 
-        adjustment.setAfterTeachingDetail(t1);
+        adjustment.setAfter(t1);
 
         System.out.println(adjustmentMapper.addAdjustment(adjustment));
 
     }
 
     @Test
-    void deleteAjustment() {
-        System.out.println(adjustmentMapper.deleteAjustment("4"));
+    void deleteAdjustment() {
+        System.out.println(adjustmentMapper.deleteAdjustment("4"));
     }
 }
