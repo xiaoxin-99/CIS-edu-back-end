@@ -28,7 +28,6 @@ public class AdjustmentMapperTest {
         adjustment.setCause("aaa");
         adjustment.setReplaceTeacher("张三丰");
         adjustment.setSubmitTime(LocalDateTime.now());
-        adjustment.setTeacherId("1988210010");
 
         TeachingWeekAndTimeAndPlace t = new TeachingWeekAndTimeAndPlace();
         t.setWeekNum(2);
@@ -50,12 +49,21 @@ public class AdjustmentMapperTest {
 
         adjustment.setAfter(t1);
 
-        System.out.println(adjustmentMapper.addAdjustment(adjustment));
+        String teacherId = "1988210010";
+        System.out.println(adjustmentMapper.addAdjustment(adjustment, teacherId));
 
     }
 
     @Test
     void deleteAdjustment() {
-        System.out.println(adjustmentMapper.deleteAdjustment("4"));
+        System.out.println(adjustmentMapper.deleteAdjustment("5"));
     }
+
+    @Test
+    void getListByStatus() {
+        List<Adjustment> listByStatus = adjustmentMapper.getListByStatus(0);
+        listByStatus.forEach(System.out::println);
+    }
+
+
 }

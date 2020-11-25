@@ -53,10 +53,5 @@ public class Adjustment implements Serializable {
      */
     private LocalDateTime submitTime;
 
-    /**
-     * 教师编号
-     */
-    private String teacherId;
-
     private static final long serialVersionUID = 1L;
 }

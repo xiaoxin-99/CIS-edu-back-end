@@ -16,7 +16,7 @@
         <result column="replace_teacher" property="replaceTeacher"/>
         <result column="status" property="status"/>
         <result column="submit_time" property="submitTime"/>
-        <result column="teacher_id" property="teacherId"/>
+
     </resultMap>
     <insert id="addAdjustment">
         insert into adjustment(cause, before_week_num, before_week, before_section,
@@ -28,15 +28,22 @@
         #{adjustment.after.weekNum},#{adjustment.after.timeAndPlace.week},
         #{adjustment.after.timeAndPlace.section},
         #{adjustment.after.timeAndPlace.place}, #{adjustment.replaceTeacher}, 0,
-        #{adjustment.submitTime}, #{adjustment.teacherId}
+        #{adjustment.submitTime}, #{teacherId}
         )
     </insert>
 
     <select id="getAllAdjustment" resultMap="adjustment">
         select adjustment_id, cause, before_week_num, before_week, before_section,
         before_room, after_week_num, after_week, after_section, after_room,
-        replace_teacher, status, submit_time, teacher_id from adjustment
+        replace_teacher, status, submit_time from adjustment
         where teacher_id = #{teacherId};
+    </select>
+
+    <select id="getListByStatus" resultType="com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Adjustment">
+        select adjustment_id, cause, before_week_num, before_week, before_section,
+        before_room, after_week_num, after_week, after_section, after_room,
+        replace_teacher, status, submit_time from adjustment
+        where status = #{status};
     </select>
 
     <delete id="deleteAdjustment">

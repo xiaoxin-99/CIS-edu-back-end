@@ -4,6 +4,7 @@ import com.sczyjsxy.jkx.cis.edubackend.mapper.*;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingActivities;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
+import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Adjustment;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreDetailVo;
 import com.sczyjsxy.jkx.cis.edubackend.model.entity.ClassScoreVo;
@@ -30,6 +31,9 @@ public class TeacherServiceImpl implements TeacherService {
 
     @Autowired
     private ScoreMapper scoreMapper;
+
+    @Autowired
+    private AdjustmentMapper adjustmentMapper;
 
     @Override
     public List<TeacherTimetableVo> teacherTimetable(String teacherId, String semester) {
@@ -89,6 +93,21 @@ public class TeacherServiceImpl implements TeacherService {
     public Integer confirmScore(String id) {
         // 确定成绩条数
         return scoreMapper.confirmScore(id);
+    }
+
+    @Override
+    public List<Adjustment> getAllAdjustment(String teacherId) {
+        return adjustmentMapper.getAllAdjustment(teacherId);
+    }
+
+    @Override
+    public Integer addAdjustment(Adjustment adjustment, String teacherId) {
+        return adjustmentMapper.addAdjustment(adjustment, teacherId);
+    }
+
+    @Override
+    public Integer deleteAdjustment(String adjustmentId) {
+        return adjustmentMapper.deleteAdjustment(adjustmentId);
     }
 
 

@@ -24,9 +24,10 @@ public interface AdjustmentMapper {
     /**
      * 申请调课
      * @param adjustment 调课的详细信息
+     * @param teacherId 教师编号
      * @return 是否申请成功
      */
-    Integer addAdjustment(@Param("adjustment") Adjustment adjustment);
+    Integer addAdjustment(@Param("adjustment") Adjustment adjustment, @Param("teacherId") String teacherId);
 
     /**
      * 删除申请
@@ -34,4 +35,11 @@ public interface AdjustmentMapper {
      * @return 删除条数
      */
     Integer deleteAdjustment(String adjustmentId);
+
+    /**
+     * 根据状态查询列表
+     * @param status 状态值
+     * @return 调课列表
+     */
+    List<Adjustment> getListByStatus(Integer status);
 }
