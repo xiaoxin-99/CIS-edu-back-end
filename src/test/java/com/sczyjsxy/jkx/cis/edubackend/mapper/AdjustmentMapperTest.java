@@ -55,7 +55,7 @@ public class AdjustmentMapperTest {
     }
 
     @Test
-    void deleteAjustment() {
+    void deleteAdjustment() {
         System.out.println(adjustmentMapper.deleteAdjustment("4"));
     }
 }
