@@ -1,17 +1,17 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.entity;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Score;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Student;
 import lombok.Data;
 
-import java.io.Serializable;
 
 /**
  * 班级成绩详情
  * @author Mr zhang
  */
 @Data
-public class ClassScoreVo implements Serializable {
+public class ClassScoreVo implements Ser {
 
     /**
      * 评分

@@ -1,8 +1,8 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.common;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import lombok.Data;
 
-import java.io.Serializable;
 
 /**
  * 上课时间和地点
@@ -10,7 +10,7 @@ import java.io.Serializable;
  * @author lx
  */
 @Data
-public class TeachingTimeAndPlace implements Serializable {
+public class TeachingTimeAndPlace implements Ser {
 
     /**
      * 星次

@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import lombok.Data;
 
 import java.time.LocalDate;
@@ -9,7 +10,7 @@ import java.time.LocalDate;
  * @author lx
  */
 @Data
-public class Attendance {
+public class Attendance implements Ser {
 
     /**
      * 课程

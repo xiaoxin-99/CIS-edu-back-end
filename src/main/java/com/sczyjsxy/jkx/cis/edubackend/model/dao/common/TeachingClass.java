@@ -1,12 +1,13 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import lombok.Data;
 
 /**
  * @author lx
  */
 @Data
-public class TeachingClass {
+public class TeachingClass implements Ser {
 
     /**
      * 教学班编号

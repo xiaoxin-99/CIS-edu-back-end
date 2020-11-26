@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.common;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import lombok.Data;
 
 /**
@@ -7,7 +8,7 @@ import lombok.Data;
  * @author lx
  */
 @Data
-public class ScoreDetails {
+public class ScoreDetails implements Ser {
 
     /**
      * 平时成绩

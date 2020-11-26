@@ -1,16 +1,16 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.entity;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.ScoreDetails;
 import lombok.Data;
 
-import java.io.Serializable;
 
 /**
  * 学生成绩
  * @author lx
  */
 @Data
-public class StudentScoreVo implements Serializable {
+public class StudentScoreVo implements Ser {
 
     /**
      * 教师名称

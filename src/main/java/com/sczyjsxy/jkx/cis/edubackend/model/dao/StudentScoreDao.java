@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Student;
 import lombok.Data;
@@ -9,7 +10,7 @@ import lombok.Data;
  * @author lx
  */
 @Data
-public class StudentScoreDao {
+public class StudentScoreDao implements Ser {
 
     /**
      * 教学活动编号

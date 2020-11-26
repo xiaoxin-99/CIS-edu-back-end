@@ -1,8 +1,8 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
-import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingWeekAndTimeAndPlace;
 import lombok.Data;
 
@@ -11,7 +11,7 @@ import lombok.Data;
  * @author Mr zhang
  */
 @Data
-public class Adjustment implements Serializable {
+public class Adjustment implements Ser {
     /**
      * 调课编号
      */

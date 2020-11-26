@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import com.sczyjsxy.jkx.cis.edubackend.model.common.TeachingTimeAndPlace;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.Activities;
 import com.sczyjsxy.jkx.cis.edubackend.model.dao.common.TeachingClass;
@@ -12,7 +13,7 @@ import java.util.List;
  * @author Mr zhang
  */
 @Data
-public class TeacherTimetable {
+public class TeacherTimetable implements Ser {
 
     /**
      * 教学活动

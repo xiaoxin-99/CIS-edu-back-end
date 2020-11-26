@@ -1,5 +1,6 @@
 package com.sczyjsxy.jkx.cis.edubackend.model.dao.common;
 
+import com.sczyjsxy.jkx.cis.edubackend.common.Ser;
 import lombok.Data;
 import java.time.LocalDateTime;
 
@@ -7,7 +8,7 @@ import java.time.LocalDateTime;
  * @author Mr zhang
  */
 @Data
-public class TeachingLog {
+public class TeachingLog implements Ser {
 
     /**
      * 教学日志编号
